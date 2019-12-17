@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script>
+    d3.selectAll('div')//获取页面中所有的div
+    .attr('class','red box')//为获取到的元素 ， 添加两个类名red box
+    .each(function(d,i){//遍历获取到的所有元素
+        //i为索引 ， d表示这个元素的数据绑定
+        d3.select(this).style('width','100px').append('h1').text(i);//这样设置div的样式
+        //d3.select(this).append('h1').text(i).style('width','100px');//这样设置h1的样式
+    })
+
+</script>
+</html>

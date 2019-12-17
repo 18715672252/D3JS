@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <div id="box" class="box"></div>
+   <p>11111</p>
+   <p>2222</p>
+</body>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script>
+    d3.select('h3')
+    //一下操作 ， 会作用在距离最近的元素上面
+    console.log(d3.select('p'));//只能选取一个元素，最上面那个
+    //text操作,可以接受字符串,也可以接受函数 , html方法一样
+    d3.select('#box').text('111111111')//为ID为box元素设置文本内容
+    console.log(d3.select('#box').text());//获取ID为box元素文本内容
+    d3.select('#box').text(()=>{
+        return '222222222222222222'+'我是穿入的函数';
+    })
+    console.log(d3.select('#box').text());//获取ID为box元素文本内容
+    //html操作
+    d3.select('#box').html('111           111111      ')//为ID为box元素设置html内容
+    console.log(d3.select('#box').html());//获取ID为box元素html内容
+    //自定义属性操作
+    d3.select('#box').attr('foo','goo')//为ID为box元素设置设置一个属性 ，属性名是foo ，值为goo 即<div id="box" foo="goo"></div>
+    let attr = d3.select('#box').attr('foo');//读取id为box元素的foo属性的属性值
+    console.log(attr);//goo
+    //class操作
+    console.log(d3.select('#box').classed('box'));//检测某个元素上是否存在某个类名 。 存在返回true,不存在返回false
+    d3.select('#box').classed('box1',true);//为某个元素添加一个box1的类名
+    d3.select('#box').classed('box1',()=>{return false});//为某个元素删除一个box1的类名 , 可以动态设置class名
+    //style操作
+    console.log(d3.select('#box').style('font-size'));//获取ID为box的font-size //16px
+    d3.select('#box').style('font-size','40px')//设置ID为box的font-size为40px
+    d3.select('#box').style('color','red')//设置ID为box的color为red
+    d3.select('#box').style('font-size',()=>{//穿入函数动态设置font-size的值
+        return (40 + 40) + 'px';
+    })
+    //d3.select()和JQ的$.()选取元素一样都遵循css3规范
+</script>
+</html>
