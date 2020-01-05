@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+.bar {
+    height: 20px;
+    background: red;
+}
+
+</style>
+<body>
+    <div class="control">
+        <button onclick="sort(compareByExpense)">1111</button>
+        <button onclick="sort(compareByCategory)">22222</button>
+        <button onclick="sort()">33333</button>
+    </div>
+</body>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script>
+var data = [
+    {e:10,c:'a'},
+    {e:15,c:'a'},
+    {e:30,c:'a'},
+    {e:50,c:'a'},
+    {e:80,c:'a'},
+    {e:65,c:'a'},
+    {e:55,c:'a'},
+    {e:20,c:'a'},
+    {e:8,c:'a'},
+]
+function render(data,comparator){
+    var bars = d3.select('body').selectAll('div.bar').data(data);//第一步绑定数据
+    bars.enter().append('div').attr('class','bar').append('span');//第二部enter
+    d3.select('body').selectAll('div.bar').style('width',function(d,i){//第三部update
+        return (d.e*5) + 'px';
+    }).select('span').text(function(d,i){
+        return d.c
+    })
+    if(comparator){
+        bars.sort(comparator)
+        console.log(8888);
+        
+    }
+}
+var compareByExpense = function(a,b) {
+    return a.e < b.e
+}
+var compareByCategory = function(a,b) {
+    return a.c < b.c
+}
+render(data)
+function sort(comparator) {
+    render(data,comparator)
+}
+</script>
+</html>

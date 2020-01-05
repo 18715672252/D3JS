@@ -36,7 +36,7 @@
     d3.select('#box').classed('box1',()=>{return false});//为某个元素删除一个box1的类名 , 可以动态设置class名
     //style操作
     console.log(d3.select('#box').style('font-size'));//获取ID为box的font-size //16px
-    d3.select('#box').style('font-size','40px')//设置ID为box的font-size为40px
+    d3.select('#box').style('font-size','100px')//设置ID为box的font-size为40px
     d3.select('#box').style('color','red')//设置ID为box的color为red
     d3.select('#box').style('font-size',()=>{//穿入函数动态设置font-size的值
         return (40 + 40) + 'px';

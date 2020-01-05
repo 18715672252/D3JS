@@ -55,7 +55,7 @@
             divs.enter().append('div').append('span');
             divs.attr('class','bar').merge(divs).style('height',function(d,i){
                 return d(i) + 'px';
-            }).select('span').text(function(d,i){
+            }).style('text-align','center').select('span').text(function(d,i){
                 return d(i);
             })
             divs.exit().remove();
